@@ -1,2 +1,3 @@
-# vending-machine-ios
-iOS | Vending Machine
+# iOS | Vending Machine
+
+![Vending Machine](https://github.com/SonyaMoisset/vending-machine-ios/blob/master/vending-machine.png)
