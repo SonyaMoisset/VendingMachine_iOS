@@ -72,8 +72,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             do {
                 try vendingMachine.vend(selection: currentSelection, quantity: Int(quantityStepper.value))
                 updateDisplayWith(balance: vendingMachine.amountDeposited, totalPrice: 0.0, itemPrice: 0, itemQuantity: 1)
-            } catch {
-                // FIXME: Error handling code
+            } catch VendingMachineError.outOfStock {
+                showAlertWith(title: "Out of Stock", message: "This item is unavailable. Please make another selection")
+            } catch VendingMachineError.invalidSelection {
+                showAlertWith(title: "Invalid Selection", message: "Please make another selectior")
+            } catch VendingMachineError.insufficientFunds(let required) {
+                let message = "You need $\(required) to complete the transaction"
+                showAlertWith(title: "Insufficient Funds", message: message)
+            } catch let error {
+                fatalError("\(error)")
             }
             
             if let indexPath = collectionView.indexPathsForSelectedItems?.first {
@@ -119,6 +126,23 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
     
+    func showAlertWith(title: String, message: String, style: UIAlertControllerStyle = .alert) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: dismissAlert)
+        alertController.addAction(okAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func dismissAlert(sender: UIAlertAction) -> Void {
+        updateDisplayWith(balance: 0, totalPrice: 0, itemPrice: 0, itemQuantity: 1)
+    }
+    
+    @IBAction func depositFunds() {
+        vendingMachine.deposit(5.0)
+        updateDisplayWith(balance: vendingMachine.amountDeposited)
+    }
     
     // MARK: UICollectionViewDataSource
     
