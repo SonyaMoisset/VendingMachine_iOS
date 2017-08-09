@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  VendingMachine
-//
-//  Created by Sonya Moisset on 30/07/2017.
-//  Copyright © 2017 Treehouse Island, Inc. All rights reserved.
-//
-
 import UIKit
 
 fileprivate let reuseIdentifier = "vendingItem"
@@ -37,15 +29,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         setupCollectionViewCells()
-
         updateDisplayWith(balance: vendingMachine.amountDeposited, totalPrice: 0, itemPrice: 0, itemQuantity: 1)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Setup
@@ -89,7 +78,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             }
                 
         } else {
-            // FIXME: Alert user to no selection
         }
     }
     

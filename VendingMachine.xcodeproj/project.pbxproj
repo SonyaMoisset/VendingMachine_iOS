@@ -68,8 +68,8 @@
 				9771F6C61DF0A6C000B2B06D /* VendingItemCell.swift */,
 				332C174A1F2E69E6000C9C37 /* VendingMachine.swift */,
 				9771F6B81DF0833300B2B06D /* Main.storyboard */,
-				9771F6BB1DF0833300B2B06D /* Assets.xcassets */,
 				9771F6BD1DF0833300B2B06D /* LaunchScreen.storyboard */,
+				9771F6BB1DF0833300B2B06D /* Assets.xcassets */,
 				9771F6C01DF0833300B2B06D /* Info.plist */,
 				9771F6CC1DF0D68E00B2B06D /* VendingInventory.plist */,
 			);
